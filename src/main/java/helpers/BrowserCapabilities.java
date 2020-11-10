@@ -1,5 +1,7 @@
 package helpers;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,14 +13,17 @@ public class BrowserCapabilities {
 
     public static WebDriver driver;
 
-    public static WebDriver getBrowserInstance(String Browser){
+    public static WebDriver getDriverInstance(String Browser){
 
         if(Browser == "chrome")
         {
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
+
         }
         else if (Browser == "firefox")
         {
+            WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
         }
 
